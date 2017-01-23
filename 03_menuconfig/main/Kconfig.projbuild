@@ -1,0 +1,39 @@
+menu "Custom configuration"
+
+	config StringValue
+		string "String value"
+		default "test"
+		help
+			Test for a string value.
+
+	config IntValue
+		int "Int value"
+		default 1
+		help
+			Test for a int value.	
+
+	config HexValue
+		hex "Hex value"
+		default 1
+		help
+			Test for a hex value.
+
+	config BoolValue
+		bool "Bool value"
+		help
+			Test for a bool value.		
+
+	choice
+		prompt "Choice Value"
+		default CHOICE_2
+		help
+			Test for a choice element
+		config CHOICE_1
+			bool "First choice"
+		config CHOICE_2
+			bool "Second choice"
+		config CHOICE_3
+			bool "Third choice"
+	endchoice
+		
+endmenu
