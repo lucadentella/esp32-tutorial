@@ -1,0 +1,25 @@
+menu "Example configuration"
+
+	config WIFI_SSID
+		string "WIFI Network SSID"
+		help
+			Enter the SSID of the wifi network
+
+	config WIFI_PASSWORD
+		string "WIFI Network Password"
+		help
+			Enter the password of the wifi network
+
+	config WEBSITE
+		string "Target website"
+		default "www.google.com"
+		help
+			Enter the address of the target website
+	
+	config RESOURCE
+		string "Website resource"
+		default "/"
+		help
+			Enter the resource URL
+	
+endmenu
