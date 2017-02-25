@@ -1,0 +1,14 @@
+menu "Example Configuration"
+
+config BUTTON_PIN
+    int "Number of the PIN connected to the BUTTON"
+	range 0 34
+	default 0
+
+config LED_PIN
+    int "Number of the PIN connected to the LED"
+	range 0 34
+	default 5
+
+
+endmenu
