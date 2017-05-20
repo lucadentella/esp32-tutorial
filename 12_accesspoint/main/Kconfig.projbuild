@@ -1,0 +1,59 @@
+menu "Access Point configuration"
+
+	config AP_SSID
+		string "Wifi SSID"
+		default "esp32-ap"
+		help
+			SSID for the Access Point Wifi network (max 31 chars)
+
+	config AP_PASSWORD
+		string "Wifi password"
+		help
+			Password for the Wifi network (if needed)
+
+	config AP_CHANNEL
+		int "Wifi channel"
+		default 0
+		help
+			Channel for the Wifi network
+	
+	choice
+		prompt "Authentication mode"
+		default WIFI_AUTH_WPA2_PSK
+		help
+			Authentication mode for the Wifi network
+		config WIFI_AUTH_OPEN
+			bool "Open"
+		config WIFI_AUTH_WEP
+			bool "WEP"
+		config WIFI_AUTH_WPA_PSK
+			bool "WPA-PSK"
+		config WIFI_AUTH_WPA2_PSK
+			bool "WPA2-PSK"
+		config WIFI_AUTH_WPA_WPA2_PSK
+			bool "WPA-PSK or WPA2-PSK"
+		config WIFI_AUTH_WPA2_ENTERPRISE
+			bool "WPA2 Enterprise"			
+	endchoice
+	
+	config AP_HIDE_SSID
+		bool "Hide SSID"
+		default 0
+		help
+			Hide SSID
+	
+	config AP_MAX_CONNECTIONS
+		int "Maximum concurrent connections"
+		range 1 4
+		default 4
+		help
+			Maximum number of concurrent connections (1-4)
+	
+	config AP_BEACON_INTERVAL	
+		int "Beacon interval (ms)"
+		range 100 60000
+		default 100
+		help
+			Beacon interval in ms (100-60000)
+			
+endmenu
