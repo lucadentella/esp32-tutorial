@@ -1,0 +1,17 @@
+menu "Example configuration"
+
+config WIFI_SSID
+    string "Wifi SSID"
+	default "mywifi"
+
+config WIFI_PASSWORD
+    string "Wifi password"
+	default "mypassword"
+
+config RELAY_PIN
+    int "Number of the PIN connected to the RELAY"
+	range 0 34
+	default 0
+	
+endmenu
+
