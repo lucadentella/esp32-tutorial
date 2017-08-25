@@ -1,0 +1,20 @@
+menu "Example configuration"
+
+	config AP_SSID
+		string "Wifi SSID"
+		default "esp32-ap"
+		help
+			SSID for the Access Point Wifi network (max 31 chars)
+
+	config AP_PASSWORD
+		string "Wifi password"
+		help
+			Password for the Wifi network (if needed)
+
+	config RELAY_PIN
+		int "Number of the PIN connected to the RELAY"
+		range 0 34
+		default 0
+	
+endmenu
+
