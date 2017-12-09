@@ -1,0 +1,26 @@
+
+<Thermostat fx:id="temperature" topic="/room/temperature">
+	<properties name="temperature" />
+	<levelMin>0</levelMin>
+	<levelMax>30</levelMax>
+	<increment>0.1</increment>
+</Thermostat >
+<DeviceNumber fx:id="humidity" topic="/room/humidity" >
+	<properties name="humidity" />
+	<levelMin>0</levelMin>
+	<levelMax>100</levelMax>
+	<increment>1</increment>
+</DeviceNumber >
+
+<StartLine UnitPage.page="Room monitor" VBox.vgrow= "NEVER" />
+<ViewGauge UnitPage.page="Room monitor" device="$temperature" type="SPACEX" />
+<ViewChart UnitPage.page="Room monitor">
+	<ViewChartSerie device="$temperature"/>
+	<legendVisible>false</legendVisible>
+</ViewChart>
+<StartLine UnitPage.page="Room monitor" VBox.vgrow= "NEVER" />
+<ViewGauge UnitPage.page="Room monitor" device="$humidity" type="SPACEX"/>
+<ViewChart UnitPage.page="Room monitor">
+	<ViewChartSerie device="$humidity"/>
+	<legendVisible>false</legendVisible>
+</ViewChart>
