@@ -15,5 +15,5 @@ void loop_task(void *pvParameter)
 void app_main()
 {
 	
-    xTaskCreate(&loop_task, "loop_task", 512, NULL, 5, NULL);
+    xTaskCreate(&loop_task, "loop_task", 1024, NULL, 5, NULL);
 }
