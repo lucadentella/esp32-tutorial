@@ -4,6 +4,7 @@
 #include "esp_event_loop.h"
 #include "esp_wifi.h"
 #include "esp_log.h"
+#include "nvs_flash.h"
 
 #define MAX_APs 20
 
@@ -32,6 +33,9 @@ void loop_task(void *pvParameter)
 
 void app_main()
 {
+	// initialize NVS
+	ESP_ERROR_CHECK(nvs_flash_init());
+	
 	// initialize the tcp stack
 	tcpip_adapter_init();
 

@@ -6,6 +6,7 @@
 #include "esp_wifi.h"
 #include "esp_event_loop.h"
 #include "esp_log.h"
+#include "nvs_flash.h"
 
 #define WIFI_SSID "MYSSID"
 #define WIFI_PASS "MYPASSWORD"
@@ -68,8 +69,8 @@ void app_main()
 	// disable the default wifi logging
 	esp_log_level_set("wifi", ESP_LOG_NONE);
 	
-	// disable stdout buffering
-	setvbuf(stdout, NULL, _IONBF, 0);
+	// initialize NVS
+	ESP_ERROR_CHECK(nvs_flash_init());
 	
 	// create the event group to handle wifi events
 	wifi_event_group = xEventGroupCreate();

@@ -7,6 +7,7 @@
 #include "esp_wifi.h"
 #include "esp_event_loop.h"
 #include "esp_log.h"
+#include "nvs_flash.h"
 
 
 // set AP CONFIG values
@@ -125,6 +126,9 @@ void app_main()
 	
 	// create the event group to handle wifi events
 	event_group = xEventGroupCreate();
+	
+	// initialize NVS
+	ESP_ERROR_CHECK(nvs_flash_init());
 		
 	// initialize the tcp stack
 	tcpip_adapter_init();
