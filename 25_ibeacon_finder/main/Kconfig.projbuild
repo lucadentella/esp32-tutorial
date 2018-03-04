@@ -1,0 +1,20 @@
+menu "iBeacon finder configuration"
+
+config IBEACON_UUID
+    string "iBeacon UUID"
+
+config MIN_RSSI
+    int "Min RSSI to consider the iBeacon found"
+	default -50	
+	
+config TIMEOUT
+    int "Timeout (in milliseconds)"
+	default 10000
+
+config LED_PIN
+    int "PIN connected to the LED"
+	range 0 34
+	default 0
+	
+endmenu
+
