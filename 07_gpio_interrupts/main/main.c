@@ -7,6 +7,9 @@
 
 #define ESP_INTR_FLAG_DEFAULT 0
 
+#define CONFIG_LED_PIN    12
+#define CONFIG_BUTTON_PIN 0
+
 SemaphoreHandle_t xSemaphore = NULL;
 bool led_status = false;
 
