@@ -229,10 +229,12 @@ void app_main()
 	printf("Gateway:     %s\n", ip4addr_ntoa(&ip_info.gw));	
 	
 	// run the mDNS daemon
-	mdns_server_t* mDNS = NULL;
-	ESP_ERROR_CHECK(mdns_init(TCPIP_ADAPTER_IF_STA, &mDNS));
-	ESP_ERROR_CHECK(mdns_set_hostname(mDNS, "esp32"));
-	ESP_ERROR_CHECK(mdns_set_instance(mDNS, "Basic HTTP Server"));
+	//initialize mDNS
+   	ESP_ERROR_CHECK( mdns_init(TCPIP_ADAPTER_IF_STA) );
+	//set mDNS hostname (required if you want to advertise services)
+   	ESP_ERROR_CHECK( mdns_hostname_set("esp32") );
+   	//set default mDNS instance name
+   	ESP_ERROR_CHECK( mdns_instance_name_set("Basic HTTP Server") );
 	printf("mDNS started\n");
 	
 	// start the HTTP Server task
