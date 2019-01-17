@@ -25,18 +25,25 @@ static esp_ble_scan_params_t ble_scan_params = {
 	};
 
 // check if the device was already discovered
-bool alreadyDiscovered(esp_bd_addr_t address) {
+bool alreadyDiscovered(esp_bd_addr_t address){
 
 	bool found = false;
-	
+
 	for(int i = 0; i < discovered_devices_num; i++) {
-		
-		for(int j = 0; j < ESP_BD_ADDR_LEN; j++)
-			found = (discovered_devices[i][j] == address[j]);
-		
+
+		uint8_t alreadyFound[6] = {
+				discovered_devices[i][0],
+				discovered_devices[i][1],
+				discovered_devices[i][2],
+				discovered_devices[i][3],
+				discovered_devices[i][4],
+				discovered_devices[i][5]};
+// this way checks for all possible combinations of MAC addresses, instead of only last byte.
+		if(memcmp(alreadyFound,address,6) == 0) found = true;
+
 		if(found) break;
 	}
-	
+
 	return found;
 }
 
