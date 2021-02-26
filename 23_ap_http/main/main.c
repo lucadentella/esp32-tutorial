@@ -67,10 +67,11 @@ static esp_err_t event_handler(void *ctx, system_event_t *event) {
 		printf("- Wifi adapter started\n\n");
 		
 		// create and configure the mDNS service
-		mdns_server_t* mDNS = NULL;
-		ESP_ERROR_CHECK(mdns_init(TCPIP_ADAPTER_IF_AP, &mDNS));
-		ESP_ERROR_CHECK(mdns_set_hostname(mDNS, "esp32web"));
-		ESP_ERROR_CHECK(mdns_set_instance(mDNS, "ESP32 webserver"));
+		ESP_ERROR_CHECK(mdns_init(TCPIP_ADAPTER_IF_STA) );
+		//set mDNS hostname (required if you want to advertise services)
+		ESP_ERROR_CHECK(mdns_hostname_set("esp32") );
+		//set default mDNS instance name
+		ESP_ERROR_CHECK(mdns_instance_name_set("Basic HTTP Server") );
 		printf("- mDNS service started\n");
 		
 		// start the HTTP server task
